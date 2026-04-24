@@ -3390,5 +3390,70 @@
             "1831",
             "the summer"
         ]
+    },
+    "Project-Helios-US-Archive/Cyber_Law/Comparative_Legal_Analysis.md": {
+        "PERSON": [],
+        "ORG": [
+            "4th Amendment",
+            "IP",
+            "CFAA",
+            "DMCA"
+        ],
+        "GPE": [
+            "US"
+        ],
+        "DATE": []
+    },
+    "Project-Helios-US-Archive/Cyber_Law/Know_Your_Rights.md": {
+        "PERSON": [
+            "Computer Fraud"
+        ],
+        "ORG": [
+            "Legal Protections for Security Researchers\nSecurity",
+            "Digital",
+            "CFAA"
+        ],
+        "GPE": [],
+        "DATE": []
+    },
+    "Project-Helios-US-Archive/Cyber_Law/Digital_Advocacy/ECPA.md": {
+        "PERSON": [
+            "Statutory Snippet"
+        ],
+        "ORG": [
+            "the Federal Wiretap Act",
+            "Cornell LII / Government Archives"
+        ],
+        "GPE": [],
+        "DATE": [
+            "manual-2001",
+            "1986",
+            "act-1986",
+            "1968"
+        ]
+    },
+    "Project-Helios-US-Archive/Cyber_Law/White_Hat_Legal_Defense/CFAA.md": {
+        "PERSON": [
+            "Computer Fraud",
+            "Statutory Snippet"
+        ],
+        "ORG": [
+            "Cornell LII / Government Archives",
+            "CFAA"
+        ],
+        "GPE": [],
+        "DATE": []
+    },
+    "Project-Helios-US-Archive/Cyber_Law/White_Hat_Legal_Defense/DMCA_Section_1201.md": {
+        "PERSON": [
+            "Statutory Snippet"
+        ],
+        "ORG": [
+            "Cornell LII / Government Archives"
+        ],
+        "GPE": [],
+        "DATE": [
+            "1201"
+        ]
     }
 }
