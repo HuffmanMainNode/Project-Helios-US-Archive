@@ -2,7 +2,8 @@
     "downloaded_urls": [
         "https://www.gutenberg.org/files/147/147-0.txt",
         "mock://courtlistener/roe_v_wade",
-        "https://www.wikidata.org/wiki/Q128118"
+        "https://www.wikidata.org/wiki/Q128118",
+        "https://www.gutenberg.org/files/18/18-0.txt"
     ],
     "api_cursors": {},
     "cloned_repositories": []
