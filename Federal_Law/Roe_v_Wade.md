@@ -1,15 +1,1 @@
-# Roe v. Wade
-
-**Date:** 1973-01-22
-**Jurisdiction:** Federal
-**Source:** CourtListener (Mock)
-
-## Summary
-Landmark decision establishing a constitutional right to abortion.
-
-## Text Snippet
-> We, therefore, conclude that the right of personal privacy includes the abortion decision...
-
-## Related Foundational Documents
-* [Bill of Rights](Bill_of_Rights.md)
-* [US Constitution](US_Constitution.md)
+The right of privacy, whether it be founded in the Fourteenth Amendment's concept of personal liberty and restrictions upon state action... is broad enough to encompass a woman's decision whether or not to terminate her pregnancy. [Unabridged Opinion Content placeholder]
