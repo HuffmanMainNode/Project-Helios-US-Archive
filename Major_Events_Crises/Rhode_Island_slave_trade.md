@@ -5,3 +5,6 @@
 
 ## Description
 Transatlantic slave‑trading network centred in colonial and early‑national Rhode Island
+
+## Related Foundational Documents
+* [Emancipation Proclamation](../Federal_Law/Emancipation_Proclamation.md)

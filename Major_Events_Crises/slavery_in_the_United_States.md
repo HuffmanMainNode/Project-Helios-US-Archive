@@ -5,3 +5,6 @@
 
 ## Description
 form of slave labor which existed as a legal institution from the early years of the United States
+
+## Related Foundational Documents
+* [Emancipation Proclamation](../Federal_Law/Emancipation_Proclamation.md)

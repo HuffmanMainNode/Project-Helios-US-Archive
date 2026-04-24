@@ -8,3 +8,6 @@ A civil war fought in the United States between the Union and the Confederacy, p
 
 ## Linked Legal Shifts
 Led to the Reconstruction Amendments (13th, 14th, and 15th Amendments).
+
+## Related Foundational Documents
+* [Emancipation Proclamation](../Federal_Law/Emancipation_Proclamation.md)
