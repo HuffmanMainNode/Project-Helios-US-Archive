@@ -1,81 +1,54 @@
-<div align="center">
-  <h3>🏛️ Official Borrell & Huffman LLC Enterprise Portfolio</h3>
-  <p><i>This repository is a verified public asset of the Borrell & Huffman Intellectual Property Ecosystem.</i></p>
-  <p>
-    <img src="https://img.shields.io/badge/Enterprise-Borrell_%26_Huffman-blue.svg?style=for-the-badge" alt="Enterprise ID">
-    <img src="https://img.shields.io/badge/Status-Public_Showcase-success.svg?style=for-the-badge" alt="Status">
-    <img src="https://img.shields.io/badge/Clearance-Unclassified-yellow.svg?style=for-the-badge" alt="Clearance">
-  </p>
-</div>
+# Project Helios: US Archive
 
----
+Project Helios is an experimental, static research archive containing selected U.S. historical, legal, and civic reference materials. Its purpose is to preserve navigable source texts and research notes, not to provide legal advice or a verified, comprehensive legal database.
 
-# SB26-189 Compliance Boilerplate
+## What is currently present
 
-## Pre-Decision Notice
-**[Insert this notice prominently before a user engages with the system]**
+- Public-domain and historical texts, including selected Project Gutenberg editions of foundational U.S. documents and political works.
+- Local HTML/text captures of selected public legal-reference pages.
+- Short historical-event and legal-topic records, summaries, and excerpts.
+- An optional CourtListener API wrapper in `courtlistener_integration.py`. It requires a CourtListener API token and is not a complete ingestion pipeline.
+- Git LFS-tracked files for archive state and knowledge-graph artifacts. GitHub's raw file view exposes pointer records for these paths. A checkout may hydrate the payloads; the audit distinguishes pointer files from present-but-unverified payloads. Their source provenance and semantic contents have not been reviewed in this pass.
 
-> **NOTICE OF AUTOMATED DECISION-MAKING TECHNOLOGY (ADMT)**
-> Please be aware that this system uses an Automated Decision-Making Technology (ADMT) to materially influence a consequential decision affecting you. For more information on how this ADMT works and how your data is used, please see our [Link to full documentation/privacy policy].
+## Important accuracy and completeness warning
 
----
+Some files are incomplete examples, short excerpts, mock citations, or explicit placeholders rather than full primary-source texts. For example, several Supreme Court case files contain only short excerpts and placeholder notes; the Articles of Confederation and Emancipation Proclamation records are not complete texts. Do not cite these files as complete opinions, statutes, or official editions.
 
-## Post-Adverse Decision Explanation
-**[Provide this explanation within 30 days of an adverse outcome]**
+Every legal or historical record should identify its source, edition, date retrieved, and whether it is a full text, excerpt, summary, or research note. A title or quotation alone is not a reliable citation.
 
-> **EXPLANATION OF ADVERSE DECISION**
->
-> **The Decision:** You have received an adverse outcome regarding [State the specific decision, e.g., your application, eligibility, etc.].
->
-> **Role of ADMT:** This decision was materially influenced by our Automated Decision-Making Technology (ADMT), known as [Insert Name of ADMT], version [Insert Version Number], developed by [Insert Developer Name]. The ADMT processed the following types of personal data from these sources: [List types and sources of data].
->
-> **How to Request More Information or Exercise Your Rights:** You have the right to request additional information regarding this decision and the ADMT used. You may also exercise your consumer rights under Colorado law, including the right to correct data or opt-out. To do so, please follow this process: [Insert simple-to-follow instructions, e.g., click here, email us at X, or fill out this form].
+## What is not currently implemented
 
+The repository does not currently contain a reproducible automated Gutenberg/Wikidata ingestion pipeline, a completed CourtListener crawler, a spaCy NER pipeline, a generated and inspectable knowledge graph, a semantic/vector search engine, or a deployed static site. The historical `Actions_Report.md`, `Deployment_Report.md`, and roadmap describe ambitions and earlier claims; they are not proof that those capabilities are present in the current checkout.
 
-# Project Helios: US Digital Archive & Research Hub
+## Audit the archive
 
-## ⚖️ Mission Statement
-Project Helios is a specialized initiative dedicated to the systematic archival, auditing, and analysis of United States historical, legal, and governmental datasets. By applying Zero Trust principles and advanced Natural Language Processing, we aim to transform static archives into dynamic, interlinked knowledge ecosystems for cybersecurity research and legal transparency.
+The repository includes a local, dependency-free structural and provenance screen:
 
----
+```bash
+python scripts/archive_audit.py --root .
+python -m unittest discover -s tests -p 'test_*.py' -v
+```
 
-## 📁 Project Hub Overview
-This repository serves as the central node for the **US Archive** and the **Protocol Helios** initiatives. It bridges the gap between raw historical data and actionable intelligence through phased development.
+It reports Git LFS pointers, explicit placeholder/mock content, missing source references in legal/history folders, short records, and identical files at multiple paths. See [Archive Audit](docs/ARCHIVE_AUDIT.md) for interpretation and limitations.
 
-### 🚀 Project Phases
+The audit does not authenticate sources, prove historical accuracy, determine copyright status, or validate legal conclusions.
 
-1.  **Phase 1: Foundational Ingestion**
-    *   Primary sources: National Archives, GovInfo, and Project Gutenberg.
-    *   Core assets: Declaration of Independence, US Constitution, and Federalist Papers.
+## Using the CourtListener wrapper
 
-2.  **Phase 2: Legal & Crisis Archiving**
-    *   Mapping major US historical events and crises via Wikidata SPARQL.
-    *   Initial scaffolding for authenticated case law ingestion via CourtListener.
+The optional CourtListener client requires a valid `COURTLISTENER_API_KEY`. It is separate from the local archive audit and is not required to browse the existing files. See [CourtListener integration](docs/COURTLISTENER.md) for its scope and safety limits.
 
-3.  **Phase 3: NLP & Knowledge Graphing**
-    *   Named Entity Recognition (NER) using `spaCy` to extract Persons, Organizations, and Geopolitical Entities.
-    *   Generation of a structured `knowledge_graph.json` mapping relationships across 60+ foundational documents.
+## Repository structure caveat
 
-4.  **Phase 4: Semantic Search & Analysis (Upcoming)**
-    *   Implementation of vector embeddings and semantic conceptual search.
+Two historical Git submodule entries exist under `Legal_Repositories/`, but the repository has no `.gitmodules` file. One pinned commit corresponds to `18F/open-source-policy`; the other pinned commit could not be matched to the similarly named CFPB repository. Their URLs and checkout availability are therefore unresolved. They are not counted as verified archive content, and this update does not invent submodule URLs or rewrite the gitlinks.
 
----
+## Source and licensing
 
-## 🗺️ Hierarchical Navigation
+The repository-level MIT license applies to the repository's own code and documentation to the extent the maintainer has rights to license them. It does not automatically relicense third-party texts, archived web pages, images, or other source material. Review each source's own terms and applicable public-domain/copyright status before redistribution or commercial use.
 
-> Use the links below to navigate the core indices of the archive.
+## Responsible use
 
-*   **[Historical Eras](./Historical_Eras/)**: Documents organized by Founding, Civil War, and Modern eras.
-*   **[Federal Law](./Federal_Law/)**: Central repository for foundational acts and Supreme Court cases.
-*   **[Major Events & Crises](./Major_Events_Crises/)**: A chronological index of US history linked to legal shifts.
-*   **[Full Law Books](./Full_Law_Books/)**: Complete digital library of foundational legal treatises.
-*   **[Web Archives](./Web_Archives/)**: Offline HTML/Text captures of key public legal resources.
-*   **[Audit Reports](./Audit_Reports/)**: Security and integrity reports for the archive datasets.
-
----
-
-## 🛠️ Technical Methodology
-*   **Language**: Python 3.x
-*   **NLP**: spaCy (en_core_web_sm)
-*   **Auditing**: Lazarus Protocol Standards (Zero Trust Verification)
-*   **State Management**: Automated checkpointing via `archive_state.json`
+- Preserve attribution and source context.
+- Distinguish primary sources, excerpts, summaries, and analysis.
+- Do not treat historical summaries or automated extraction as legal advice.
+- Verify current law and controlling authority from official sources before relying on a legal proposition.
+- Do not infer completeness or authenticity from a file name, folder, or checksum.
