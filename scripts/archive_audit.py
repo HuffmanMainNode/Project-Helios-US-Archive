@@ -45,6 +45,7 @@ SOURCE_REFERENCE = re.compile(
     re.IGNORECASE,
 )
 TEXT_SUFFIXES = {".md", ".txt", ".html", ".htm", ".json", ".py"}
+LFS_TRACKED_SUFFIXES = {".json", ".png"}
 
 
 def audit_archive(root: str | Path) -> dict:
@@ -73,7 +74,12 @@ def audit_archive(root: str | Path) -> dict:
             is_lfs = bool(LFS_POINTER.fullmatch(raw))
             if is_lfs:
                 statuses.append("lfs_payload_not_inspected")
-            elif path.suffix.lower() in TEXT_SUFFIXES:
+            elif path.suffix.lower() in LFS_TRACKED_SUFFIXES:
+                # The repository's .gitattributes tracks JSON and PNG via LFS.
+                # A hydrated working-tree file is present, but this scanner
+                # does not establish source provenance or compare its pointer OID.
+                statuses.append("lfs_payload_present_unverified")
+            if not is_lfs and path.suffix.lower() in TEXT_SUFFIXES:
                 text = raw.decode("utf-8", errors="replace")
                 if PLACEHOLDER.search(text):
                     statuses.append("placeholder_or_mock_content")
