@@ -11,6 +11,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+SPECIAL_FILES = ("archive_state.json", "knowledge_graph.json")
 ARCHIVE_ROOTS = (
     "Federal_Law",
     "Historical_Eras",
@@ -52,13 +53,13 @@ def audit_archive(root: str | Path) -> dict:
     errors = []
     hashes: dict[str, list[str]] = defaultdict(list)
 
+    candidate_paths = [root / name for name in SPECIAL_FILES if (root / name).is_file()]
     for directory in ARCHIVE_ROOTS:
         base = root / directory
-        if not base.is_dir():
-            continue
-        for path in sorted(base.rglob("*")):
-            if not path.is_file():
-                continue
+        if base.is_dir():
+            candidate_paths.extend(path for path in base.rglob("*") if path.is_file())
+
+    for path in sorted(candidate_paths):
             relative = path.relative_to(root).as_posix()
             try:
                 raw = path.read_bytes()
@@ -77,7 +78,10 @@ def audit_archive(root: str | Path) -> dict:
                 if PLACEHOLDER.search(text):
                     statuses.append("placeholder_or_mock_content")
                 if (
-                    path.parts[-2] in CITATION_REQUIRED_ROOTS
+                    any(
+                        part in CITATION_REQUIRED_ROOTS
+                        for part in path.relative_to(root).parts[:-1]
+                    )
                     and not SOURCE_REFERENCE.search(text)
                 ):
                     statuses.append("source_reference_missing")
