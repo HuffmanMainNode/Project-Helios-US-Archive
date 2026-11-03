@@ -8,7 +8,7 @@ Project Helios is an experimental, static research archive containing selected U
 - Local HTML/text captures of selected public legal-reference pages.
 - Short historical-event and legal-topic records, summaries, and excerpts.
 - An optional CourtListener API wrapper in `courtlistener_integration.py`. It requires a CourtListener API token and is not a complete ingestion pipeline.
-- Git LFS-tracked files for archive state and knowledge-graph artifacts. Their pointer files are present in the repository, but the referenced payloads have not been verified in this review.
+- Git LFS-tracked files for archive state and knowledge-graph artifacts. GitHub's raw file view exposes pointer records for these paths. A checkout may hydrate the payloads; the audit distinguishes pointer files from present-but-unverified payloads. Their source provenance and semantic contents have not been reviewed in this pass.
 
 ## Important accuracy and completeness warning
 
