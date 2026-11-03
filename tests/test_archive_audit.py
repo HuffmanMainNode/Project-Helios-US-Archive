@@ -41,6 +41,7 @@ class ArchiveAuditTests(unittest.TestCase):
             )
             (phase / "graph.json").write_text(LFS_POINTER, encoding="utf-8")
             (root / "knowledge_graph.json").write_text(LFS_POINTER, encoding="utf-8")
+            (root / "archive_state.json").write_text("{}", encoding="utf-8")
 
             report = audit_archive(root)
             by_path = {entry["path"]: entry["statuses"] for entry in report["entries"]}
@@ -49,6 +50,10 @@ class ArchiveAuditTests(unittest.TestCase):
             self.assertIn("source_reference_missing", by_path["Federal_Law/no-source.md"])
             self.assertIn("lfs_payload_not_inspected", by_path["Phase_4_Analysis_Synthesis/graph.json"])
             self.assertIn("lfs_payload_not_inspected", by_path["knowledge_graph.json"])
+            self.assertIn(
+                "lfs_payload_present_unverified",
+                by_path["archive_state.json"],
+            )
             self.assertIn("duplicate_content_review", by_path["Federal_Law/constitution.md"])
             self.assertEqual(len(report["duplicate_content_groups"]), 2)
             duplicate_paths = [
