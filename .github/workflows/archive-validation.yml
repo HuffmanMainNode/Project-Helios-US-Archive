@@ -33,3 +33,6 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Audit archive files
         run: python scripts/archive_audit.py --root . --output "$RUNNER_TEMP/archive-audit.json"
+      - name: Report audit summary
+        run: |
+          python -c "import json,sys; report=json.load(open(sys.argv[1], encoding='utf-8')); print(json.dumps({'files_scanned': report['files_scanned'], 'status_counts': report['status_counts'], 'duplicate_content_groups': len(report['duplicate_content_groups']), 'errors': report['errors']}, indent=2))" "$RUNNER_TEMP/archive-audit.json"
