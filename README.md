@@ -37,6 +37,11 @@ The audit does not authenticate sources, prove historical accuracy, determine co
 
 The optional CourtListener client requires a valid `COURTLISTENER_API_KEY`. It is separate from the local archive audit and is not required to browse the existing files. See [CourtListener integration](docs/COURTLISTENER.md) for its scope and safety limits.
 
+
+## Repository structure caveat
+
+Two historical Git submodule entries exist under `Legal_Repositories/`, but the repository has no `.gitmodules` file. One pinned commit corresponds to `18F/open-source-policy`; the other pinned commit could not be matched to the similarly named CFPB repository. Their URLs and checkout availability are therefore unresolved. They are not counted as verified archive content, and this update does not invent submodule URLs or rewrite the gitlinks.
+
 ## Source and licensing
 
 The repository-level MIT license applies to the repository's own code and documentation to the extent the maintainer has rights to license them. It does not automatically relicense third-party texts, archived web pages, images, or other source material. Review each source's own terms and applicable public-domain/copyright status before redistribution or commercial use.
