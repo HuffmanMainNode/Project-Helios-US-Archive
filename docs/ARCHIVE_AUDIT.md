@@ -30,3 +30,18 @@ A SHA-256 hash is a local fingerprint. It does not authenticate the source, prov
 Git LFS pointer files are not expanded by the audit. Fetch LFS objects separately with Git LFS and rerun the audit on a complete local checkout before claiming those payloads have been inspected.
 
 The audit makes no network requests and never modifies archive files.
+
+
+## Baseline audit: 2026-11-03
+
+The CI audit scanned **54 archive files** and reported no read errors. The baseline findings were:
+
+| Finding | Count |
+|---|---:|
+| Explicit placeholder/mock content | 9 files |
+| Short Markdown records requiring review | 21 files |
+| Missing recognizable source reference in legal/history folders | 13 files |
+| Duplicate-content groups | 7 groups (14 file paths) |
+| LFS-tracked payloads present but not provenance-verified | 3 files |
+
+These are overlapping review flags, not mutually exclusive categories. A short record is not automatically wrong, and identical content may be intentional across navigation folders. The report is a triage index, not a verdict on authenticity or legal status.
