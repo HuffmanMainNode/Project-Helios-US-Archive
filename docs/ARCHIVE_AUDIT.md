@@ -12,7 +12,7 @@ Write a JSON report:
 python scripts/archive_audit.py --root . --output reports/archive-audit.json
 ```
 
-The audit fingerprints local files and identifies explicit placeholder/mock markers, missing recognizable source references in legal/history folders, short Markdown records, Git LFS pointer files, and identical content at multiple paths.
+The audit fingerprints local files and identifies explicit placeholder/mock markers, missing recognizable source references in legal/history folders, short Markdown records, Git LFS pointer files (including root-level archive state and knowledge-graph files), and identical content at multiple paths.
 
 ## Status meanings
 
