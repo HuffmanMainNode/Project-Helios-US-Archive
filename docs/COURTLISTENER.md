@@ -2,6 +2,14 @@
 
 `courtlistener_integration.py` is an optional, read-only search client for the CourtListener REST API.
 
+## Installation
+
+Install the optional HTTP client dependency:
+
+```bash
+python -m pip install -r requirements-courtlistener.txt
+```
+
 ## Configuration
 
 Set `COURTLISTENER_API_KEY` in the environment or pass a token to `CourtListenerClient`. Do not commit credentials. The local archive and archive-audit utility do not require this token.
