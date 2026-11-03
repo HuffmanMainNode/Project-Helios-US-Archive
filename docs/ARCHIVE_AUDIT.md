@@ -17,6 +17,7 @@ The audit fingerprints local files and identifies explicit placeholder/mock mark
 ## Status meanings
 
 - `lfs_payload_not_inspected`: the checked-out file is a Git LFS pointer. The payload itself was not read or verified.
+- `lfs_payload_present_unverified`: a JSON/PNG file tracked by the repository's LFS rules is present in the checkout, but this audit does not establish its source provenance or compare it to the original pointer OID.
 - `placeholder_or_mock_content`: the file contains a marker that indicates incomplete or mock content.
 - `source_reference_missing`: a source citation or URL was not found in a folder where provenance is expected.
 - `short_record_review`: a short Markdown record needs a human decision about whether it is a summary, index, or incomplete source.
