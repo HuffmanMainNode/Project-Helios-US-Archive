@@ -18,10 +18,12 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12", "3.13"]
     steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: false
-          persist-credentials: false
+      - name: Fetch repository without initializing unresolved historical gitlinks
+        run: |
+          git init
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git -c protocol.version=2 fetch --no-tags --depth=1 origin "${GITHUB_SHA}"
+          git checkout --detach FETCH_HEAD
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
