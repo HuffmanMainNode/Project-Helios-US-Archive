@@ -50,7 +50,17 @@ class ArchiveAuditTests(unittest.TestCase):
             self.assertIn("lfs_payload_not_inspected", by_path["Phase_4_Analysis_Synthesis/graph.json"])
             self.assertIn("lfs_payload_not_inspected", by_path["knowledge_graph.json"])
             self.assertIn("duplicate_content_review", by_path["Federal_Law/constitution.md"])
-            self.assertEqual(len(report["duplicate_content_groups"]), 1)
+            self.assertEqual(len(report["duplicate_content_groups"]), 2)
+            duplicate_paths = [
+                set(group["paths"]) for group in report["duplicate_content_groups"]
+            ]
+            self.assertIn(
+                {
+                    "Federal_Law/constitution.md",
+                    "Historical_Eras/Founding_Era/constitution-copy.md",
+                },
+                duplicate_paths,
+            )
 
     def test_does_not_claim_source_authenticity_from_a_hash(self):
         with tempfile.TemporaryDirectory() as directory:
